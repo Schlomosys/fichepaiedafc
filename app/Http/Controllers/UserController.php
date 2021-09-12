@@ -170,7 +170,7 @@ public function updateProfile(Request $request)
         // Make a image name based on user name and current timestamp
         $name = Str::slug($request->input('lastname')).'_'.time();
         // Define folder path
-        $folder = '/uploads/images/';
+        $folder = '/uploads/pictures/';
         // Make a file path where image will be stored [ folder path + file name + file extension]
         $filePath = $folder . $name. '.' . $image->getClientOriginalExtension();
         // Upload image
@@ -182,8 +182,55 @@ public function updateProfile(Request $request)
     $user->save();
 
     // Return user back and show a flash message
-    return redirect()->back()->with(['status' => 'Profile updated successfully.']);
+    return redirect()->back()->with(['success' => 'Profil édité avec succès.']);
 }
+
+
+/**
+* Store a newly created resource in storage.
+*
+* @param  \Illuminate\Http\Request  $request
+* @return \Illuminate\Http\Response
+*/
+
+public function addSignature(Request $request)
+{
+    // Form validation
+    $request->validate([
+        
+        'profile_image'  =>'|image|mimes:jpeg,png,jpg,gif|max:2048'
+    ]);
+
+    // Get current user
+    $user =User::findOrFail(3);
+    // Set user name
+    
+  
+
+    // Check if a profile image has been uploaded
+    if ($request->has('profile_image')) {
+        // Get image file
+        $image = $request->file('profile_image');
+        // Make a image name based on user name and current timestamp
+        $name = Str::slug($request->input('lastname')).'_'.time();
+        // Define folder path
+        $folder = '/uploads/pictures/';
+        // Make a file path where image will be stored [ folder path + file name + file extension]
+        $filePath = $folder . $name. '.' . $image->getClientOriginalExtension();
+        // Upload image
+        $this->uploadOne($image, $folder, 'public', $name);
+        // Set user profile image path in database to filePath
+        $user->profile_image = $filePath;
+    }
+    // Persist user record to database
+    $user->save();
+
+    // Return user back and show a flash message
+    return redirect()->back()->with(['success' => 'Signature ajoutée avec succès.']); 
+}
+
+
+
 /**
 * Remove the specified resource from storage.
 *

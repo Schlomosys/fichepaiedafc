@@ -21,7 +21,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="text-center lh-1 mb-2">
-                    <h3 class="fw-bold">DEDRAS ONG</h3> <span class="fw-bold" >BULLETIN DE PAIE DE {{ $fichepaie->mois }} {{ $fichepaie->annee }}</span>
+                    <h4 class="fw-bold">DEDRAS ONG</h4> <span class="fw-bold" >BULLETIN DE PAIE DE {{ $fichepaie->mois }} {{ $fichepaie->annee }}</span>
                 </div>
                 <div class="row">
                     <div class="col-md-10">
@@ -43,7 +43,13 @@
                 <div class="text-center lh-1 mb-2">
                     <span class="fw-bold" >SITUATION ADMINISTRATIVE ET FAMILIALE</span>
                 </div>
-                <table class=" table table-bordered">
+                <div class="row">
+                    <div class="col-md-10">
+                </div>
+                
+                </div>
+                </div>
+                <table class=" table table-bordered table-sm">
                     
                     <thead class="">
                         <tr>
@@ -87,7 +93,7 @@
                 </table>
                         
                 <!--<div class="d-flex justify-content-end"> <span>Working Branch:ROHINI</span> </div>-->
-                <div class="text-center lh-1 mb-2">
+               <div class="text-center lh-1 mb-2">
                     <span class="fw-bold" >SALAIRE DU MOIS DE {{ $fichepaie->mois }} {{ $fichepaie->annee }}</span>
                 </div>
                 <div class="row">
@@ -141,7 +147,7 @@
                             </div>
                         </div>--}}
                     </div>
-                    <table class="table table-bordered">
+                    <table class="table table-bordered  table-sm">
                         <thead class="bg-dark text-white">
                             <tr>
                                 <th scope="col">Rubriques</th>
@@ -179,7 +185,7 @@
                             </tr>
                             <tr>
                                 <th scope="row">SALAIRE DE BASE</th>
-                                <th scope="row">{{ $fichepaie->salaire_base}}</th>
+                                <th scope="row"> {{ number_format($fichepaie->salaire_base, 2,",",".") }}</th>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -191,7 +197,7 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td>{{ $fichepaie->prime_projet}}</td>
+                                <td>{{ number_format($fichepaie->prime_projet, 2,",",".")}}</td>
                                 <td></td>
                                 <td></td>
                             </tr>
@@ -201,7 +207,7 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td>{{ $fichepaie->prime_resp}}</td>
+                                <td>{{ number_format($fichepaie->prime_resp, 2,",",".")}}</td>
                                 <td></td>
                                 <td></td>
                             </tr>
@@ -210,7 +216,7 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td>{{ $fichepaie->prime_risq}}</td>
+                                <td>{{ number_format($fichepaie->prime_risq, 2,",",".")}}</td>
                                 <td></td>
                                 <td></td>
                             </tr>
@@ -219,7 +225,7 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td>{{ $fichepaie->prime_rend}}</td>
+                                <td>{{ number_format($fichepaie->prime_rend, 2,",",".")}}</td>
                                 <td></td>
                                 <td></td>
                             </tr>
@@ -228,13 +234,13 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td>{{ $fichepaie->indemn_deplacement}}</td>
+                                <td> {{ number_format($fichepaie->indemn_deplacement, 2,",",".")}}</td>
                                 <td></td>
                                 <td></td>
                             </tr>
                             <tr>
                                 <th scope="row" >SALAIRE BRUT</th>
-                                <th scope="row">{{ $fichepaie->salaire_brut}}</th>
+                                <th scope="row">{{ number_format($fichepaie->salaire_brut, 2,",",".")}}</th>
                                 <td colspan="5"></td>
                                 
                             </tr>
@@ -242,7 +248,7 @@
                                 <th scope="">Cotisations C.N.S.S.</th>
                                 <td></td>
                                 <td>0.036</td>
-                                <td>{{ $fichepaie->cnss_po}}</td>
+                                <td>{{number_format($fichepaie->cnss_po, 2,",",".")}}</td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -254,13 +260,13 @@
                                 <td></td>
                                 <td></td>
                                 <td>0.164</td>
-                                <td>{{ $fichepaie->cnss_pp}}</td>
+                                <td>{{number_format($fichepaie->cnss_pp, 2,",",".")}}</td>
                             </tr>
                             <tr>
                                 <th scope="">I.P.T.S.</th>
                                 <td></td>
                                 <td></td>
-                                <td>{{ $fichepaie->irpp_ts}}</td>
+                                <td>{{number_format( $fichepaie->irpp_ts, 2,",",".")}}</td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -272,11 +278,11 @@
                                 <td></td>
                                 <td></td>
                                 <td>0.04</td>
-                                <td>{{ $fichepaie->vps}}</td>
+                                <td>{{number_format(  $fichepaie->vps, 2,",",".")}}</td>
                             </tr>
                             <tr>
                                 <th scope="">REMB AVANCES SUR SALAIRE</th>
-                                <td>{{ $fichepaie->total_avanc}}</td>
+                                <td>{{number_format($fichepaie->total_avanc, 2,",",".")}}</td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -285,7 +291,7 @@
                             </tr>
                             <tr>
                                 <th scope="row">SALAIRE NET.</th>
-                                <th scope="row">{{ $fichepaie->salaire_net}}</th>
+                                <th scope="row">{{number_format($fichepaie->salaire_net, 2,",",".")}}</th>
                                 <td colspan="5"></td>
                             </tr>
                             <!--<tr>
@@ -341,12 +347,12 @@
 
                             <tr>
                                 <th scope="row">{{ $fichepaie->salaire_brut}}</th>
-                                <td>{{ $fichepaie->cnss_po}}</td>
-                                <td>{{ $fichepaie->irpp_ts}}</td>
-                                <td>{{ $fichepaie->cnss_pp}}</td>
-                                <td>{{ $fichepaie->vps}}</td>
-                                <td>{{ $fichepaie->mass_sal}}</td>
-                                <th scope="row">{{ $fichepaie->salaire_net}}  FCFA</th>
+                                <td>{{number_format($fichepaie->cnss_po, 2,",",".")}}</td>
+                                <td>{{number_format($fichepaie->irpp_ts, 2,",",".")}}</td>
+                                <td>{{number_format($fichepaie->cnss_pp, 2,",",".")}}</td>
+                                <td>{{number_format($fichepaie->vps, 2,",",".")}}</td>
+                                <td>{{number_format($fichepaie->mass_sal, 2,",",".")}}</td>
+                                <th scope="row">{{number_format($fichepaie->salaire_net, 2,",",".")}}  FCFA</th>
                             </tr>
 
                         </tbody>
@@ -394,7 +400,8 @@
                                 <span class="fw-bolder" style="color: white;">signature</span>
                             </div></td>
                             <td rowspan=""><div class="text-center lh-1 mb-2">
-                                <span class="fw-bolder" style="color: white;">signature</span>
+                                <span class="fw-bolder" style=""><div class="row justify-content-center" style="font-family: 'Dosis';
+                                    font-weight: bold; color:black;"><img class="photocouv" alt="100x100" src="{{ asset($signat->profile_image) }}" data-holder-rendered="true" style="height:50px; width:125px; ;"></div></span>
                             </div></td>   
  
                         </tr>

@@ -190,8 +190,9 @@ class FichepaieController extends Controller
     public function visualiser($id)
     {
         //
+        $signat= $user =User::findOrFail(3);
         $fichepaie = Fichepaie::find($id);
-        return view('fiche_paie', compact('fichepaie'));
+        return view('fiche_paie', compact('fichepaie', 'signat'));
 
 
     }

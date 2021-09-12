@@ -37,9 +37,10 @@ Route::group(['middleware' => ['auth']], function() {
     /*Route::post('folow', [App\Http\Controllers\HomeController::class, 'follwUserRequest'])->name('folow');*/
   
     Route::post('updateProfile/{id}', [App\Http\Controllers\UserController::class, 'updateProfile'])->name('user.updateprofile');
+    Route::post('addsignature', [App\Http\Controllers\UserController::class, 'addSignature'])->name('user.signature');
     
    
-    // FOLLOWS __NOTIFICATION
+    // FOLLOWS __NOTIFICATION   addSignature
     Route::get('myusers', [App\Http\Controllers\UserController::class, 'index'])->name('myusers');
     
     

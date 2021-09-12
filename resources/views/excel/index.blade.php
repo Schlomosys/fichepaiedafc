@@ -1518,7 +1518,8 @@
     <!--<li><a href="">
           <div class="icon"><i class="fas fa-clock"></i></div>
           <div class="title">DONNEES</div>
-          </a></li>-->      
+          </a></li>-->    
+   
    <li><a href="">
         <div class="icon"><i class="fas fa-cog"></i></div>
         <div class="title">PARAMÈTRES</div>
@@ -1708,8 +1709,8 @@
                     {!! Session::forget('success') !!}
                     <br />
                     <!--<h2 class="text-title">Import Export Excel/CSV - LaravelCode</h2>-->
-                    <!--<a href="{{ route('exportExcel', 'xls') }}"><button class="btn btn-success">Download Excel xls</button></a>
-                   <a href="{{ route('exportExcel', 'xlsx') }}"><button class="btn btn-success">Download Excel xlsx</button></a>
+                   <div data-toggle="modal" data-target="#modale" class="title m-b-md"><button class="btn btn-outline-danger">SIGNATURE</button></div>
+                  <!-- <a href="{{ route('exportExcel', 'xlsx') }}"><button class="btn btn-success">Download Excel xlsx</button></div>
                     <a href="{{ route('exportExcel', 'csv') }}"><button class="btn btn-success">Download CSV</button></a>
                     <a href="{{ route('generatepdf') }}"><button class="btn btn-success">Envoyer les Fiches de Paies</button></a>-->
                     <form style="border: 4px solid #a1a1a1;margin-top: 15px;padding: 10px;" action="{{ route('importExcel') }}" class="form-horizontal" method="post" enctype="multipart/form-data">
@@ -2133,6 +2134,87 @@
 
 
 <!--MODALS  __ __--------------------------__________MODALS-->
+<!--MODALS   __ __--------------------------__________ MODALS-->
+
+<!--CODEE__-->
+ <!-- Modal HTML Markup -->
+
+ <div id="modale" class="modal fade">
+  <div class="modal-dialog" role="document">
+  <div class="modal-content">
+  <div class="modal-header">
+    <h1 class="modal-title" style="color:black;"> EDITER LA SIGNATURE</h1>
+    <button type="button" class="close" data-dismiss="modal">
+      <span style="">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+  <div class="col-xl-12 order-xl-1">
+    <div class="card bg-secondary shadow">
+      <div class="card-header bg-white border-0">
+        <div class="row align-items-center">
+          <div class="col-12">
+            <!--<h3 class="mb-0" style="color:rgb(99, 140, 124)">Modifier mon profil</h3>-->
+          </div>
+          <div class="col-4 text-right">
+           <!-- <a href="{{-- route('profile.editProfileExpFormation',$profile->id) --}}" class="btn btn-sm btn-primary" style=" font-style:normal; font-weight:bold;font-family:Garamond, Trebuchet MS, Tahoma;">Ajouter une expérience pro/formation </a>-->
+          </div>
+        </div>
+      </div>
+      <div class="card-body" style="background:rgb(240, 245, 242); " >
+        @if ($errors->any())
+              <div class="alert alert-danger">
+                <strong>oops!</strong> Vos entrées sont invalides.<br><br>
+                  <ul>
+                      @foreach ($errors->all() as $error)
+                     <li>{{ $error }}</li>
+                      @endforeach
+                  </ul>
+  
+              </div>
+        @endif
+        @if(Session::has('success'))
+             <div class="alert alert-success">
+              {{ Session::get('success') }}
+             @php
+               Session::forget('success');
+              @endphp
+        </div>
+        @endif
+        @if (\Session::has('success'))
+        <div class="alert alert-success">
+          <ul>
+          <li>{!! \Session::get('success') !!}</li>
+          </ul>
+           </div>
+         @endif
+         <form action="{{ route('user.signature') }}" method="POST" role="form" enctype="multipart/form-data">
+          @csrf
+         
+
+          <div class="form-group row">
+              <label for="profile_image" class="col-md-4 col-form-label text-md-right" style="color:black; font-weight:bold;">Signature</label>
+              <div class="col-md-6">
+                  <input id="profile_image" type="file" class="form-control" name="profile_image">
+                  {{--@if (auth()->user()->image)
+                      <code>{{ auth()->user()->image }}</code>
+                  @endif--}}
+              </div>
+          </div>
+          <div class="form-group row mb-0 mt-5">
+              <div class="col-md-8 offset-md-4">
+                  <button type="submit" class="btn btn-primary" style="color:black; font-weight:bold;">Enregistrer</button>
+              </div>
+          </div>
+      </form>
+      </div>
+    </div>
+  </div>
+    
+  </div>
+  </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+  </div>
 
    
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
