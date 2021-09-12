@@ -138,7 +138,8 @@ class FichepaieController extends Controller
          {
         //$user_details = Users::where('id',$invoice->user_id)->first();
            $html = '';
-           $view = view('fiche_paie')->with(compact('fichepaie'));
+           $signat=User::findOrFail(auth()->user()->id);
+           $view = view('fiche_paie')->with(compact('fichepaie', 'signat'));
            $html .= $view->render();
            set_time_limit(0);
            #$pdf = PDF::loadHTML($html)->setPaper('a4', 'landscape')->save(public_path().'/uploads/'.$fichepaie->num_mat.'.pdf');
