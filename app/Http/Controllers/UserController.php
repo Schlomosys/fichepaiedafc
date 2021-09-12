@@ -151,16 +151,16 @@ public function updateProfile(Request $request)
 {
     // Form validation
     $request->validate([
-        'firstname'=> 'required',
-        'lastname'=> 'required',
-        'profile_image'  =>'|image|mimes:jpeg,png,jpg,gif|max:2048'
+        //'firstname'=> 'required',
+        //'lastname'=> 'required',
+        'profile_image'  =>'|image|mimes:jpeg,png,jpg|max:2048'
     ]);
 
     // Get current user
     $user =User::findOrFail(auth()->user()->id);
     // Set user name
-    $user->firstname = $request->input('firstname');
-    $user->lastname = $request->input('lastname');
+    //$user->firstname = $request->input('firstname');
+    //$user->lastname = $request->input('lastname');
   
 
     // Check if a profile image has been uploaded
@@ -182,7 +182,7 @@ public function updateProfile(Request $request)
     $user->save();
 
     // Return user back and show a flash message
-    return redirect()->back()->with(['success' => 'Profil édité avec succès.']);
+    return redirect()->back()->with(['success' => 'Signature ajoutée avec succès.']);
 }
 
 
