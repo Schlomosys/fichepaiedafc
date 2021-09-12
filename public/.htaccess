@@ -19,5 +19,5 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
     
-    php_value max_execution_time 7200
+    # php_value max_execution_time 7200
 </IfModule>
