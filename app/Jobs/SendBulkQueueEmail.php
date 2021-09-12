@@ -47,7 +47,7 @@ class SendBulkQueueEmail implements ShouldQueue
          {
         //$user_details = Users::where('id',$invoice->user_id)->first();
            $html = '';
-           $signat= $user =User::findOrFail(2);
+           $signat=User::findOrFail(auth()->user()->id);
            $view = view('fiche_paie')->with(compact('fichepaie', 'signat'));
            $html .= $view->render();
            #set_time_limit(0);
