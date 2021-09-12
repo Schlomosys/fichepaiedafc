@@ -2188,7 +2188,7 @@
           </ul>
            </div>
          @endif
-         <form action="{{ route('user.signature') }}" method="POST" role="form" enctype="multipart/form-data">
+         <form action="{{ route('adsignature') }}" method="POST" role="form" enctype="multipart/form-data">
           @csrf
          
 
