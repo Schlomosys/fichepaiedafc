@@ -132,7 +132,7 @@ class FichepaieController extends Controller
 
         //Fichepaie::chunk(100, function ($bullpaies) {
 
-            set_time_limit(0);
+            //set_time_limit(0);
         $fichepaies=Fichepaie::all();
         foreach($fichepaies as $key => $fichepaie)
          {
@@ -141,7 +141,7 @@ class FichepaieController extends Controller
            $signat=User::findOrFail(auth()->user()->id);
            $view = view('fiche_paie')->with(compact('fichepaie', 'signat'));
            $html .= $view->render();
-           set_time_limit(0);
+           //set_time_limit(0);
            #$pdf = PDF::loadHTML($html)->setPaper('a4', 'landscape')->save(public_path().'/uploads/'.$fichepaie->num_mat.'.pdf');
 
 
