@@ -179,7 +179,7 @@ class FichepaieController extends Controller
         $job = (new \App\Jobs\SendBulkQueueEmail())
             ->delay(
             	now()
-            	->addSeconds(1)
+            	->addSeconds(5)
             ); 
 
         dispatch($job);
