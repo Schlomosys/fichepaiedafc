@@ -81,7 +81,7 @@ Route::group(['middleware' => ['auth']], function() {
 
 
 
-Route::get('/generatepdf', [App\Http\Controllers\FichepaieController::class, 'sendBulkMail'])->name('generatepdf');//sendBulkMail
+Route::get('/generatepdf', [App\Http\Controllers\FichepaieController::class, 'generatepdf'])->name('generatepdf');//sendBulkMail
 
 
 
