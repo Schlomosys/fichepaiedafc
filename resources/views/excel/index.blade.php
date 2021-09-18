@@ -1463,7 +1463,17 @@
     </div>
      </div>
      <div class="header__avatar">
+<<<<<<< HEAD
      
+=======
+       {{--@if (auth()->user()->profile_image)
+      <a href="#" > <img class="rounded-circle z-depth-2" alt="100x100" src="{{ asset(auth()->user()->profile_image) }}" data-holder-rendered="true" style="height:35px; width:35px;  object-fit: cover; " id="pic"></a>
+     <!-- <a href="#" class="img logo rounded-circle mb-5"><img src="{{ asset(auth()->user()->image) }}" alt="Photo de profil"  ></a>-->
+      <!--<a href="#" class="img logo rounded-circle mb-5"><img src="{{ asset("uploads/images/photoNaN.png") }}" alt="Photo de profil"  ></a>-->
+      @else
+      <a href="#" > <img class="rounded-circle z-depth-2" alt="100x100" src="{{ asset("uploads/images/photoNaN.png") }}" data-holder-rendered="true" style="height:35px; width:35px; " id="pic"></a>
+      @endif--}}  
+>>>>>>> ec79a187a6c91c91b2ac598b17f8756610e7d4ac
     </div>
    </header>
    
@@ -1476,7 +1486,17 @@
 
      <div class="profile_info">
       <div class="profile_img">
+<<<<<<< HEAD
         
+=======
+        {{--@if (auth()->user()->profile_image)
+        <a href="#" > <img class="rounded-circle z-depth-2" alt="100x100" src="{{ asset(auth()->user()->profile_image) }}" data-holder-rendered="true" style="height:65px; width:65px;  object-fit: cover; " id="pic"></a>
+       <!-- <a href="#" class="img logo rounded-circle mb-5"><img src="{{ asset(auth()->user()->image) }}" alt="Photo de profil"  ></a>-->
+        <!--<a href="#" class="img logo rounded-circle mb-5"><img src="{{ asset("uploads/images/photoNaN.png") }}" alt="Photo de profil"  ></a>-->
+        @else
+        <a href="#" > <img class="rounded-circle z-depth-2" alt="100x100" src="{{ asset("uploads/images/photoNaN.png") }}" data-holder-rendered="true" style="height:65px; width:65px; " id="pic"></a>
+        @endif--}}   
+>>>>>>> ec79a187a6c91c91b2ac598b17f8756610e7d4ac
        
       </div>
       <div class="profile_data">
@@ -1485,7 +1505,7 @@
          <!-- <div data-toggle="modal" data-target="#modal" class="title m-b-md"><div class="btn">Éditer le profil</div></div>-->
          
          
-          <div data-toggle="modal" data-target="#modal" class="title m-b-md"><div class="btn">Éditer le profil</div></div>
+          <!--<div data-toggle="modal" data-target="#modal" class="title m-b-md"><div class="btn">Éditer le profil</div></div>-->
           
       </div>
   </div>
@@ -1697,7 +1717,7 @@
                     {!! Session::forget('success') !!}
                     <br />
                     <!--<h2 class="text-title">Import Export Excel/CSV - LaravelCode</h2>-->
-                   <div data-toggle="modal" data-target="#modale" class="title m-b-md"><button class="btn btn-outline-danger">SIGNATURE</button></div>
+                   <div data-toggle="modal" data-target="#modal" class="title m-b-md"><button class="btn btn-outline-danger">SIGNATURE</button></div>
                   <!-- <a href="{{ route('exportExcel', 'xlsx') }}"><button class="btn btn-success">Download Excel xlsx</button></div>
                     <a href="{{ route('exportExcel', 'csv') }}"><button class="btn btn-success">Download CSV</button></a>
                     <a href="{{ route('generatepdf') }}"><button class="btn btn-success">Envoyer les Fiches de Paies</button></a>-->
@@ -2021,7 +2041,7 @@
   <div class="modal-dialog" role="document">
   <div class="modal-content">
   <div class="modal-header">
-    <h1 class="modal-title" style="color:black;"> Éditer le profil</h1>
+    <h1 class="modal-title" style="color:black;"> EDITER LA SIGNATURE</h1>
     <button type="button" class="close" data-dismiss="modal">
       <span style="">&times;</span>
     </button>
@@ -2068,7 +2088,7 @@
          @endif
          <form action="{{ route('user.updateprofile',$user->pseudo) }}" method="POST" role="form" enctype="multipart/form-data">
           @csrf
-          <div class="form-group row">
+         {{--<div class="form-group row">
               <label for="firstname" class="col-md-4 col-form-label text-md-right" style="color:black; font-weight:bold;">Prénom</label>
               <div class="col-md-6">
                   <input id="firstname" type="text" class="form-control" name="firstname" value="{{ old('firstname', auth()->user()->firstname) }}">
@@ -2088,9 +2108,9 @@
               <div class="col-md-6">
                   <input id="email" type="text" class="form-control" name="email" value="{{ old('email', auth()->user()->email) }}" disabled>
               </div>
-          </div>
+          </div>--}}
           <div class="form-group row">
-              <label for="profile_image" class="col-md-4 col-form-label text-md-right" style="color:black; font-weight:bold;">Photo de profil</label>
+              <label for="profile_image" class="col-md-4 col-form-label text-md-right" style="color:black; font-weight:bold;">SIGNATURE</label>
               <div class="col-md-6">
                   <input id="profile_image" type="file" class="form-control" name="profile_image">
                   {{--@if (auth()->user()->image)
@@ -2176,7 +2196,7 @@
           </ul>
            </div>
          @endif
-         <form action="{{ route('user.signature') }}" method="POST" role="form" enctype="multipart/form-data">
+         <form action="{{ route('adsignature') }}" method="POST" role="form" enctype="multipart/form-data">
           @csrf
          
 
