@@ -19,7 +19,8 @@ use Illuminate\Support\Arr;
 
 use PDF;
 use Mail;
-
+use App\Jobs\SendBulkQueueEmail;
+use Carbon\Carbon;
 
 class FichepaieController extends Controller
 {
@@ -138,7 +139,8 @@ class FichepaieController extends Controller
          {
         //$user_details = Users::where('id',$invoice->user_id)->first();
            $html = '';
-           $view = view('fiche_paie')->with(compact('fichepaie'));
+           $signat= $user =User::findOrFail(2);
+           $view = view('fiche_paie')->with(compact('fichepaie', 'signat'));
            $html .= $view->render();
            set_time_limit(0);
            #$pdf = PDF::loadHTML($html)->setPaper('a4', 'landscape')->save(public_path().'/uploads/'.$fichepaie->num_mat.'.pdf');
@@ -170,18 +172,18 @@ class FichepaieController extends Controller
     }
     public function sendBulkMail(Request $request)
     {
-    	$details = [
-    		'subject' => 'Weekly Notification'
-    	];
+    	
 
     	// send all mail in the queue.
-        $job = (new \App\Jobs\SendBulkQueueEmail())
-            ->delay(
-            	now()
-            	->addSeconds(1)
-            ); 
+       // $job = (new \App\Jobs\SendBulkQueueEmail())
+           // ->delay(
+            //	now()
+            //	->addSeconds(1)
+           // ); 
 
-        dispatch($job);
+        //dispatch($job);
+        $emailJob = (new SendBulkQueueEmail())->delay(Carbon::now()->addSeconds(3));
+        dispatch($emailJob);
 
         return redirect()->route('importExportView')
         ->with('success','Les fiches de paies on été envoyé avec succès');
@@ -190,7 +192,9 @@ class FichepaieController extends Controller
     public function visualiser($id)
     {
         //
-        $signat= $user =User::findOrFail(3);
+        
+        $signat= $user =User::findOrFail(2);
+        //$signat=User::findOrFail(auth()->user()->id);
         $fichepaie = Fichepaie::find($id);
         return view('fiche_paie', compact('fichepaie', 'signat'));
 

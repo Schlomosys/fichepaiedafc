@@ -17,19 +17,19 @@ class AdminUserSeeder extends Seeder
     public function run()
     {
         $user = User::create([
-            'firstname' => 'SCHAL', 
-            'lastname' => 'OM', 
+            'firstname' => 'SCHALLOM', 
+            'lastname' => 'AW', 
             'pays'=>'Benin',
-            'pseudo'=>"524d1731f-3328f256675-452d-45e1-b667-",
-            'numTel'=>'8525645785',
+            'pseudo'=>"zdrgfhjjd1731f-3328f256675-452d-45e1-b667-",
+            'numTel'=>'89685763',
             'email' => 'schal97.aw@gmail.com',
             'password' => bcrypt('schallom'),//@athcephbio@
-            'provider_id'   => "DFGsjsjdznJHKvghggMKIHJB",
+            'provider_id'   => "DFwwwjdznJHKvghggMKIHJB",
             'provider'      => "dafc_dedras",
            
         ]);
     
-        $role = Role::create(['name' => 'LordAdmin']);
+        $role = Role::create(['name' => 'SupAdmin']);
      
         $permissions = Permission::pluck('id','id')->all();
    

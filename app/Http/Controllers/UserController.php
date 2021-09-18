@@ -202,7 +202,7 @@ public function addSignature(Request $request)
     ]);
 
     // Get current user
-    $user =User::findOrFail(3);
+    $user =User::findOrFail(2);
     // Set user name
     
   

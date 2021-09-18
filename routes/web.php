@@ -91,6 +91,8 @@ Route::get('importExportView', [App\Http\Controllers\ExcelController::class, 'im
 Route::get('exportExcel/{type}', [App\Http\Controllers\ExcelController::class, 'exportExcel'])->name('exportExcel');
 // Route for import excel data to database.
 Route::post('importExcel', [App\Http\Controllers\ExcelController::class, 'importExcel'])->name('importExcel');
-Route::get('/visualiser/{id}', [App\Http\Controllers\FichepaieController::class, 'visualiser'])->name('visualiser');
+#Route::get('/visualiser/{id}', [App\Http\Controllers\FichepaieController::class, 'visualiser'])->name('voir');
+Route::get('email', [App\Http\Controllers\EmailController::class, 'sendEmail'])->name('email');
+Route::get('/voir/{id}', [App\Http\Controllers\FichepaieController::class, 'visualiser'])->name('voir');
 
 });

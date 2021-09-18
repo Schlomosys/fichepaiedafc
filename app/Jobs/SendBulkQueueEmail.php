@@ -9,12 +9,15 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SendMailable;
+
 use DB;
 use Hash;
 use App\Models\Fichepaie;
 use App\Models\User;
 use PDF;
-use Mail;
+
 
 class SendBulkQueueEmail implements ShouldQueue
 {
@@ -47,7 +50,8 @@ class SendBulkQueueEmail implements ShouldQueue
          {
         //$user_details = Users::where('id',$invoice->user_id)->first();
            $html = '';
-           $signat= $user =User::findOrFail(3);
+           $signat= $user =User::findOrFail(2);
+           //$signat=User::findOrFail(auth()->user()->id);
            $view = view('fiche_paie')->with(compact('fichepaie', 'signat'));
            $html .= $view->render();
            #set_time_limit(0);
@@ -56,7 +60,7 @@ class SendBulkQueueEmail implements ShouldQueue
 
            #$pdf = App::make('snappy.pdf.wrapper');setPaper('a4')->setOrientation('landscape')->setOption('margin-bottom', 0)
            #$pdf = PDF::loadHTML($html)->save(public_path().'/uploads/'.$fichepaie->created_at.'.pdf');
-           $pdf = PDF::loadHTML($html)->setPaper('a4');
+           #$pdf = PDF::loadHTML($html)->setPaper('a4');
   
 
            $data["email"] = $fichepaie->email;
@@ -65,10 +69,11 @@ class SendBulkQueueEmail implements ShouldQueue
   
            #$pdf = PDF::loadView('emails.myTestMail', $data);
   
-           Mail::send('bullpaiemail', $data, function($message)use($data, $pdf) {
+           #Mail::send('bullpaiemail', $data, function($message)use($data, $pdf) {
+            Mail::send('bullpaiemail', $data, function($message)use($data) {
             $message->to($data["email"], $data["email"])
-                    ->subject($data["title"])
-                    ->attachData($pdf->output(), "fichedepaie.pdf");
+                    ->subject($data["title"]);
+                    //->attachData($pdf->output(), "fichedepaie.pdf");
            });
         //$this->uploadOne($image, $folder, 'public', $name);
          }

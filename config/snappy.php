@@ -35,7 +35,7 @@ return [
     
     'pdf' => [
         'enabled' => true,
-        'binary'  =>'/app/bin/wkhtmltopdf',
+        'binary'  =>"C:/xampp/htdocs/vendor/wemersonjanuario/wkhtmltopdf-windows/bin/64bit/wkhtmltopdf",
         
         'timeout' => false,
         'options' => [],

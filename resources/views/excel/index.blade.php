@@ -1463,13 +1463,7 @@
     </div>
      </div>
      <div class="header__avatar">
-       @if (auth()->user()->profile_image)
-      <a href="#" > <img class="rounded-circle z-depth-2" alt="100x100" src="{{ asset(auth()->user()->profile_image) }}" data-holder-rendered="true" style="height:35px; width:35px;  object-fit: cover; " id="pic"></a>
-     <!-- <a href="#" class="img logo rounded-circle mb-5"><img src="{{ asset(auth()->user()->image) }}" alt="Photo de profil"  ></a>-->
-      <!--<a href="#" class="img logo rounded-circle mb-5"><img src="{{ asset("uploads/images/photoNaN.png") }}" alt="Photo de profil"  ></a>-->
-      @else
-      <a href="#" > <img class="rounded-circle z-depth-2" alt="100x100" src="{{ asset("uploads/images/photoNaN.png") }}" data-holder-rendered="true" style="height:35px; width:35px; " id="pic"></a>
-      @endif  
+     
     </div>
    </header>
    
@@ -1482,13 +1476,7 @@
 
      <div class="profile_info">
       <div class="profile_img">
-        @if (auth()->user()->profile_image)
-        <a href="#" > <img class="rounded-circle z-depth-2" alt="100x100" src="{{ asset(auth()->user()->profile_image) }}" data-holder-rendered="true" style="height:65px; width:65px;  object-fit: cover; " id="pic"></a>
-       <!-- <a href="#" class="img logo rounded-circle mb-5"><img src="{{ asset(auth()->user()->image) }}" alt="Photo de profil"  ></a>-->
-        <!--<a href="#" class="img logo rounded-circle mb-5"><img src="{{ asset("uploads/images/photoNaN.png") }}" alt="Photo de profil"  ></a>-->
-        @else
-        <a href="#" > <img class="rounded-circle z-depth-2" alt="100x100" src="{{ asset("uploads/images/photoNaN.png") }}" data-holder-rendered="true" style="height:65px; width:65px; " id="pic"></a>
-        @endif    
+        
        
       </div>
       <div class="profile_data">
@@ -1768,7 +1756,7 @@
           <!--<td><input type="checkbox" name="checkbox[]" value="" ></td>-->
           
           <td data-label="Action">
-          <a class="btn btn-info" href="{{ route('visualiser', $doc->id) }}">Visualiser la fiche</a>
+          <a class="btn btn-info" href="{{ route('voir', $doc->id) }}">Visualiser la fiche</a>
           <!--<a class="btn btn-primary" href="">Modifier</a>-->
           </td>
           </tr>
