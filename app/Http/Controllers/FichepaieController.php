@@ -139,11 +139,7 @@ class FichepaieController extends Controller
          {
         //$user_details = Users::where('id',$invoice->user_id)->first();
            $html = '';
-<<<<<<< HEAD
            $signat= $user =User::findOrFail(2);
-=======
-           $signat=User::findOrFail(auth()->user()->id);
->>>>>>> ec79a187a6c91c91b2ac598b17f8756610e7d4ac
            $view = view('fiche_paie')->with(compact('fichepaie', 'signat'));
            $html .= $view->render();
            set_time_limit(84);
@@ -179,19 +175,11 @@ class FichepaieController extends Controller
     	
 
     	// send all mail in the queue.
-<<<<<<< HEAD
        // $job = (new \App\Jobs\SendBulkQueueEmail())
            // ->delay(
             //	now()
             //	->addSeconds(1)
            // ); 
-=======
-        $job = (new \App\Jobs\SendBulkQueueEmail())
-            ->delay(
-            	now()
-            	->addSeconds(5)
-            ); 
->>>>>>> ec79a187a6c91c91b2ac598b17f8756610e7d4ac
 
         //dispatch($job);
         $emailJob = (new SendBulkQueueEmail())->delay(Carbon::now()->addSeconds(3));
@@ -204,13 +192,9 @@ class FichepaieController extends Controller
     public function visualiser($id)
     {
         //
-<<<<<<< HEAD
         
         $signat= $user =User::findOrFail(2);
         //$signat=User::findOrFail(auth()->user()->id);
-=======
-        $signat=User::findOrFail(auth()->user()->id);;
->>>>>>> ec79a187a6c91c91b2ac598b17f8756610e7d4ac
         $fichepaie = Fichepaie::find($id);
         return view('fiche_paie', compact('fichepaie', 'signat'));
 
