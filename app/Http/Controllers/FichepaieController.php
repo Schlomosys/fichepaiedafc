@@ -193,8 +193,8 @@ class FichepaieController extends Controller
     {
         //
         
-        $signat= $user =User::findOrFail(2);
-        //$signat=User::findOrFail(auth()->user()->id);
+        //$signat= $user =User::findOrFail(2);
+        $signat=User::findOrFail(auth()->user()->id);
         $fichepaie = Fichepaie::find($id);
         return view('fiche_paie', compact('fichepaie', 'signat'));
 
