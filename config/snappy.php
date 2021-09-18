@@ -35,7 +35,7 @@ return [
     
     'pdf' => [
         'enabled' => true,
-        'binary'  =>'/usr/local/bin/wkhtmltopdf',
+        'binary'  =>'/app/bin/wkhtmltopdf',
         
         'timeout' => false,
         'options' => [],
